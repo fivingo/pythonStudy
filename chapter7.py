@@ -4,4 +4,19 @@
 empty_tuple = ()
 print(empty_tuple)
 
-print('=====================================================================')
+print()
+
+one_marx = 'Groucho',
+print(one_marx)
+
+print()
+
+one_marx = ('Groucho',)
+print(one_marx)
+
+print()
+
+one_marx = ('Groucho')
+print(one_marx)
+print(type(one_marx))
+
