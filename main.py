@@ -4,3 +4,4 @@
 
 # Python Study
 # Author: LIsto
+# IDE: PyCharm
