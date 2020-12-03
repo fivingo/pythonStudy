@@ -368,6 +368,74 @@ print(numbers)
 
 print()
 
+# 7.2.21 항목 개수 얻기: len()
+marxes = ['Groucho', 'Chico', 'Harpo']
+print(len(marxes))
 
+print()
 
+# 7.2.22 할당하기: =
+a = [1, 2, 3]
+print(a)
+b = a
+print(b)
+a[0] = 'surprise'
+print(a)
+print(b)
+b[0] = 'I hate surprises'
+print(a)
+print(b)
+
+print()
+
+# 7.2.23 복사하기: copy(), list(), 슬라이스
+a = [1, 2, 3]
+b = a.copy()
+c = list(a)
+d = a[:]
+
+a[0] = 'integer lists are boring'
+print(a)
+print(b)
+print(c)
+print(d)
+
+print()
+
+# 7.2.24 깊은 복사: deepcopy()
+a = [1, 2, [8, 9]]
+b = a.copy()
+c = list(a)
+d = a[:]
+
+print(a)
+print(b)
+print(c)
+print(d)
+
+print()
+
+a[2][1] = 10
+print(a)
+print(b)
+print(c)
+print(d)
+
+print()
+
+import copy
+a = [1, 2, [8, 9]]
+b = copy.deepcopy(a)
+print(a)
+print(b)
+a[2][1] = 10
+print(a)
+print(b)
+
+print()
+
+# 7.2.25 리스트 비교
+a = [7, 2]
+b = [7, 2, 9]
+print(a == b)
 
