@@ -438,4 +438,15 @@ print()
 a = [7, 2]
 b = [7, 2, 9]
 print(a == b)
+print(a < b)
+a = [3, 2]
+b = [1, 2, 3]
+print(a > b)
+
+print()
+
+# 7.2.26 순회하기: for와 in
+cheeses = ['brie', 'gjetost', 'havarti']
+for cheese in cheeses:
+    print(cheese)
 
