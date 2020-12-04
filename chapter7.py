@@ -1,6 +1,7 @@
 # 7.1 튜플 #
 
 # 7.1.1 튜플 생성하기: , 그리고 ()
+from builtins import print
 
 empty_tuple = ()
 print(empty_tuple)
@@ -450,3 +451,125 @@ cheeses = ['brie', 'gjetost', 'havarti']
 for cheese in cheeses:
     print(cheese)
 
+print()
+
+cheeses = ['brie', 'gjetost', 'havarti']
+for cheese in cheeses:
+    if cheese.startswith('g'):
+        print("I won't eat anything that starts with 'g'")
+        break
+    else:
+        print(cheese)
+
+print()
+
+cheeses = ['brie', 'gjetost', 'havarti']
+for cheese in cheeses:
+    if cheese.startswith('x'):
+        print("I won't eat anything that starts with 'x'")
+        break
+    else:
+        print(cheese)
+else:
+    print("Didn't find anything that starts with 'x'")
+
+print()
+
+cheeses = []
+for cheese in cheeses:
+    print('This shop has some lovely', cheeses)
+    break
+else:
+    print('This is not much of a chees shop, is it?')
+
+print()
+
+# 7.2.27 여러 시퀀스 순회하기: zip()
+days = ['Monday', 'Tuesday', 'Wednesday']
+fruits = ['banana', 'orange', 'peach']
+drinks = ['coffee', 'tea', 'beer']
+desserts = ['tiramisu', 'ice cream', 'pie', 'pudding']
+for day, fruit, drink, dessert in zip(days, fruits, drinks, desserts):
+    print(day, ": drink", drink, "- eat", fruit, "- enjoy", dessert)
+
+print()
+
+english = 'Monday', 'Tuesday', 'Wednesday'
+french = 'Lundi', 'Mardi', 'Mercredi'
+print(list(zip(english, french)))
+print(dict(zip(english, french)))
+
+print()
+
+# 7.2.28 리스트 컴프리헨션
+number_list = []
+number_list.append(1)
+number_list.append(2)
+number_list.append(3)
+number_list.append(4)
+number_list.append(5)
+print(number_list)
+
+print()
+
+number_list = []
+for number in range(1, 6):
+    number_list.append(number)
+print(number_list)
+
+number_list = list(range(1, 6))
+print(number_list)
+
+# [표현식 for 항목 in 순회 가능한 객체)
+number_list = [number for number in range(1, 6)]
+print(number_list)
+number_list = [number - 1 for number in range(1, 6)]
+print(number_list)
+a_list = [number for number in range(1, 6) if number % 2 == 1]
+print(a_list)
+
+a_list = []
+for number in range(1, 6):
+    if number % 2 == 1:
+        a_list.append(number)
+print(a_list)
+
+rows = range(1, 4)
+cols = range(1, 3)
+for row in rows:
+    for col in cols:
+        print(row, col)
+
+rows = range(1, 4)
+cols = range(1, 3)
+cells = [(row, col) for row in rows for col in cols]
+for cell in cells:
+    print(cell)
+
+for row, col in cells:
+    print(row, col)
+
+print()
+
+# 7.2.29 리스트의 리스트
+small_birds = ['hummingbird', 'finch']
+extinct_birds = ['dodo', 'passenger pigeon', 'Norwegian Blue']
+carol_birds = [3, 'French hens', 2, 'turtleodoves']
+all_birds = [small_birds, extinct_birds, 'macow', carol_birds]
+print(all_birds)
+print(all_birds[0])
+print(all_birds[1])
+print(all_birds[1][0])
+
+print()
+
+# 7.3 튜플 vs 리스트
+# 튜플의 장점
+# 튜플은 더 적은 공간을 사용한다.
+# 실수로 튜플의 항목이 손상될 염려가 없다.
+# 튜플을 딕셔너리 키로 사용할 수 있다.
+# 네임드튜플은 객체의 단순한 대안이 될 수 있다.
+
+# 7.4 튜플 컴프리헨션은 없다
+number_thing = (number for number in range(1, 6))
+print(type(number_thing))
