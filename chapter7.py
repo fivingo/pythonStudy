@@ -1,4 +1,4 @@
-# 7.1 튜플 #
+# 7.1 튜플
 
 # 7.1.1 튜플 생성하기: , 그리고 ()
 from builtins import print
@@ -108,7 +108,7 @@ print(id(t1))
 
 print()
 
-# 7.2 리스트 #
+# 7.2 리스트
 
 # 7.2.1 생성하기: []
 empty_list = []
