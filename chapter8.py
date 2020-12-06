@@ -25,3 +25,43 @@ print()
 # 8.1.3 변환하기: dict()
 lol = [['a', 'b'], ['c', 'd'], ['e', 'f']]
 print(dict(lol))
+
+lot = [('a', 'b'), ('c', 'd'), ('e', 'f')]
+print(dict(lot))
+
+tol = (['a', 'b'], ['c', 'd'], ['e', 'f'])
+print(dict(tol))
+
+tos = ('ab', 'cd', 'ef')
+print(dict(tos))
+
+print()
+
+# 8.1.4 항목 추가/변경: [key]
+pythons = {
+    'Chapman': 'Graham',
+    'Cleese': 'John',
+    'Idle': 'Eric',
+    'Jones': 'Terry',
+    'Palin': 'Michael',
+}
+print(pythons)
+
+pythons['Gilliam'] = 'Gerry'
+print(pythons)
+
+pythons['Gilliam'] = 'Terry'
+print(pythons)
+
+
+
+
+
+
+
+
+
+
+
+
+
