@@ -262,4 +262,51 @@ print()
 
 # 8.2 셋
 
+# 8.2.1 생성하기: set()
+empty_set = set()
+print(empty_set)
+even_numbers = {0, 2, 4, 6, 8}
+print(even_numbers)
+odd_numbers = {1, 3, 5, 7, 9}
+print(odd_numbers)
+
+print()
+
+# 8.2.2 변환하기: set()
+print(set('letters'))
+print(set(['Dasher', 'Dancer', 'Prancer', 'Mason-Dixon']))
+print(set(('Ummagumma', 'Echoes', 'Atom Heart Mother')))
+print(set({'apple': 'red', 'orange': 'orange', 'cherry': 'red'}))
+
+print()
+
+# 8.2.3 길이 얻기: len()
+reindeer = set(['Dasher', 'Dancer', 'Prancer', 'Mason-Dixon'])
+print(len(reindeer))
+
+print()
+
+# 8.2.4 항목 추가하기: add()
+s = set((1, 2, 3))
+print(s)
+s.add(4)
+print(s)
+
+print()
+
+# 8.2.5 항목 삭제하기: remove()
+s = set((1, 2, 3))
+s.remove(3)
+print(s)
+
+print()
+
+# 8.2.6 순회하기: for와 in
+furniture = set(('sofa', 'ottoman', 'table'))
+for piece in furniture:
+    print(piece)
+
+print()
+
+# 8.2.7 멤버십 테스트: in
 
