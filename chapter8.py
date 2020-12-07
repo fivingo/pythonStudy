@@ -104,16 +104,162 @@ print({**first, **second})
 third = {'d': 'donuts'}
 print({**first, **third, **second})
 
+print()
 
+# 8.1.11 결합하기: update()
+pythons = {
+    'Chapman': 'Graham',
+    'Cleese': 'John',
+    'Gilliam': 'Terry',
+    'Idle': 'Eric',
+    'Jones': 'Terry',
+    'Palin': 'Michael',
+}
+print(pythons)
 
+others = {'Marx': 'Groucho', 'Howard': 'Moe'}
+pythons.update(others)
+print(pythons)
 
+first = {'a': 1, 'b': 2}
+second = {'b': 'platypus'}
+first.update(second)
+print(first)
 
+print()
 
+# 8.1.12 키와 del로 항목 삭제하기
+del pythons['Marx']
+print(pythons)
+del pythons['Howard']
+print(pythons)
 
+print()
 
+# 8.1.13 키로 항목 가져온 뒤 삭제하기: pop()
+print(len(pythons))
+print(pythons.pop('Palin'))
+print(len(pythons))
+#print(pythons.pop('Palin'))
+print(pythons.pop('First', 'Hugo'))
+print(len(pythons))
 
+print()
 
+# 8.1.14 모든 항목 삭제하기: clear()
+pythons.clear()
+print(pythons)
+pythons = {}
+print(pythons)
 
+print()
 
+# 8.1.15 키 멤버십 테스트: in
+pythons = {'Chapman': 'Graham', 'Cleese': 'John', 'Jones': 'Terry', 'Palin': 'Michael', 'Idle': 'Eric'}
+print('Chapman' in pythons)
+print('Palin' in pythons)
+print('Gilliam' in pythons)
+
+print()
+
+# 8.1.16 할당하기: =
+signals = {
+    'green': 'go',
+    'yellow': 'go faster',
+    'red': 'smile for the camera'
+}
+save_signals = signals
+signals['blue'] = 'confuse everyone'
+print(signals)
+
+print()
+
+# 8.1.17 얕은 복사: copy()
+signals = {
+    'green': 'go',
+    'yellow': 'go faster',
+    'red': 'smile for the camera'
+}
+original_signals = signals.copy()
+signals['blue'] = 'confuse everyone'
+print(signals)
+print(original_signals)
+
+print()
+
+# 8.1.18 깊은 복사: deepcopy()
+signals = {
+    'green': 'go',
+    'yellow': 'go faster',
+    'red': ['stop', 'smile']
+}
+signals_copy = signals.copy()
+print(signals)
+print(signals_copy)
+
+signals['red'][1] = 'sweat'
+print(signals)
+print(signals_copy)
+
+import copy
+signals = {
+    'green': 'go',
+    'yellow': 'go faster',
+    'red': ['stop', 'smile']
+}
+signals_copy = copy.deepcopy(signals)
+print(signals)
+print(signals_copy)
+signals['red'][1] = 'sweat'
+print(signals)
+print(signals_copy)
+
+print()
+
+# 8.1.19 딕셔너리 비교
+a = {1: 1, 2: 2, 3: 3}
+b = {3: 3, 1: 1, 2: 2}
+print(a == b)
+#print(a <= b)
+
+a = {1: [1, 2], 2: [1], 3: [1]}
+b = {1: [1, 1], 2: [1], 3: [1]}
+print(a == b)
+
+print()
+
+# 8.1.20 순회하기: for와 in
+accusation = {'room': 'ballroom', 'weapon': 'lead pipe', 'person': 'Col. Mustard'}
+for card in accusation:
+    print(card)
+
+for value in accusation.values():
+    print(value)
+
+for item in accusation.items():
+    print(item)
+
+for card, contents in accusation.items():
+    print('Card', card, 'has the contents', contents)
+
+print()
+
+# 8.1.21 딕셔너리 컴프리헨션
+word = 'letters'
+letter_counts = {letter: word.count(letter) for letter in word}
+print(letter_counts)
+
+word = 'letters'
+letter_counts = {letter: word.count(letter) for letter in set(word)}
+print(letter_counts)
+
+vowels = 'aeiou'
+word = 'onomatopoeia'
+vowels_count = {letter: word.count(letter) for letter in set(word) if letter in vowels}
+print(vowels_count)
+
+print()
+
+# 8.2 셋
 
 
