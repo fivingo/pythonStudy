@@ -309,4 +309,134 @@ for piece in furniture:
 print()
 
 # 8.2.7 멤버십 테스트: in
+drinks = {
+    'martini': {'vodka', 'vermouth'},
+    'black russian': {'vodka', 'kahlua'},
+    'white russian': {'cream', 'kahlua', 'vodka'},
+    'manhatten': {'rye', 'vermouth', 'bitters'},
+    'screwdriver': {'orange juice', 'vodka'}
+}
 
+for name, contents in drinks.items():
+    if 'vodka' in contents:
+        print(name)
+
+for name, contents in drinks.items():
+    if 'vodka' in contents and not ('vermouth' in contents or 'cream' in contents):
+        print(name)
+
+print()
+
+# 8.2.8 콤비네이션과 연산자
+for name, contents in drinks.items():
+    if contents & {'vermouth', 'orange juice'}:
+        print(name)
+
+for name, contents in drinks.items():
+    if 'vodka' in contents and not contents & {'vermouth', 'cream'}:
+        print(name)
+
+bruss = drinks['black russian']
+wruss = drinks['white russian']
+
+a = {1, 2}
+b = {2, 3}
+print(a & b)
+print(a.intersection(b))
+
+print(bruss & wruss)
+
+print(a | b)
+print(a.union(b))
+
+print(bruss | wruss)
+
+print(a - b)
+print(a.difference(b))
+
+print(bruss - wruss)
+print(wruss - bruss)
+
+print(a ^ b)
+print(a.symmetric_difference(b))
+
+print(bruss ^ wruss)
+
+print(a <= b)
+print(a.issubset(b))
+
+print(bruss <= wruss)
+
+print(a <= a)
+print(a.issubset(a))
+
+print(a < b)
+print(a < a)
+print(bruss < wruss)
+
+print(a >= b)
+print(a.issubset(b))
+print(wruss >= bruss)
+
+print(a >= a)
+print(a.issubset(a))
+
+print(a > b)
+print(wruss > bruss)
+
+print(a > a)
+
+print()
+
+# 8.2.9 셋 컴프리헨션
+a_set = {number for number in range(1, 6) if number % 3 == 1}
+print(a_set)
+
+print()
+
+# 8.2.10 불변 셋 생성하기: frozenset()
+print(frozenset([3, 2, 1]))
+#print(frozenset(set([2, 1, 3]))
+print(frozenset({3, 1, 2}))
+print(frozenset((2, 3, 1)))
+
+fs = frozenset([3, 2, 1])
+print(fs)
+#fs.add(4)
+
+# 8.3 지금까지 배운 자료구조
+
+# 대괄호 []를 사용한 리스트
+# 콤마와 괄호 ()를 사용한 튜플 (괄호는 옵션이다)
+# 중괄호 {}를 사용한 딕셔너리 또는 셋
+
+marx_list = ['Groucho', 'Chico', 'Harpo']
+marx_tuple = ('Groucho', 'Chico', 'Harpo')
+marx_dict = {'Groucho': 'banjo', 'Chico': 'piano', 'Harpo': 'harp'}
+marx_set = {'Groucho', 'Chico', 'Harpo'}
+
+print(marx_list[2])
+print(marx_tuple[2])
+print(marx_dict['Harpo'])
+print('Harpo' in marx_list)
+print('Harpo' in marx_tuple)
+print('Harpo' in marx_dict)
+print('Harpo' in marx_set)
+
+print()
+
+# 8.4 자료구조 결합하기
+marxes = ['Groucho', 'Chico', 'Harpo']
+pythons = ['Chapman', 'Cleese', 'Gilliam', 'Jones', 'Palin']
+stooges = ['Moe', 'Curly', 'Larry']
+
+tuple_of_lists = marxes, pythons, stooges
+print(tuple_of_lists)
+
+list_of_lists = [marxes, pythons, stooges]
+print(list_of_lists)
+
+dict_of_lists = {'Marxes': marxes, 'Pythons': pythons, 'Stooges': stooges}
+print(dict_of_lists)
+
+houses = {(44.79, -93.14, 285): 'My House', (38.89, -7703, 13): 'The White House'}
