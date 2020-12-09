@@ -287,9 +287,6 @@ print()
 
 # 9.7 익명 함수: lambda
 
-# words: 리스트
-# func: 리스트의 각 word 문자열에 적용되는 함수
-
 def edit_story(words, func):
     for word in words:
         print(func(word))
@@ -303,7 +300,87 @@ edit_story(stairs, enliven)
 
 edit_story(stairs, lambda word: word.capitalize() + '!')
 
+print()
+
 # 9.8 제너레이터
+print(sum(range(1, 101)))
+
+# 9.8.1 제너레이터 함수
+def my_range(first=0, last=10, step=1):
+    number = first
+    while number < last:
+        yield number
+        number += step
+
+print(my_range)
+
+ranger = my_range(1, 5)
+print(ranger)
+
+for x in ranger:
+    print(x)
+
+for try_again in ranger:
+    print(try_again)
+
+print()
+
+# 9.8.2 제너레이터 컴프리헨션
+genobj = (pair for pair in zip(['a', 'b'], ['1', '2']))
+print(genobj)
+for thing in genobj:
+    print(thing)
+
+print()
+
+# 9.9 데커레이터
+def document_it(func):
+    def new_function(*args, **kwargs):
+        print('Running function:', func.__name__)
+        print('Positinal arguments:', args)
+        print('Keyword arguments:', kwargs)
+        result = func(*args, **kwargs)
+        print('Result:', result)
+        return result
+    return new_function
+
+def add_ints(a, b):
+    return a + b
+print(add_ints(3, 5))
+cooler_add_ints = document_it(add_ints)
+print(cooler_add_ints(3, 5))
+
+@document_it
+def add_ints(a, b):
+    return a + b
+print(add_ints(3, 5))
+
+def square_it(func):
+    def new_function(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return result * result
+    return new_function
+
+@document_it
+@square_it
+def add_ints(a, b):
+    return a + b
+print(add_ints(3, 5))
+
+@square_it
+@document_it
+def add_ints(a, b):
+    return a + b
+print(add_ints(3, 5))
+
+print()
+
+# 9.10 네임스페이스와 스코프
+animal = 'fruitbat'
+def print_global():
+    print('inside print_global:', animal)
+print('at the top level:', animal)
+print_global()
 
 
 
