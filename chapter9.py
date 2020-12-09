@@ -262,10 +262,6 @@ print(knights('Ni!'))
 print()
 
 # 9.6.1 클로저
-
-# inner2()는 인수를 취하지 않고, 외부 함수의 변수를 직접적으로 사용한다.
-# knight2()는 inner2 함수 이름을 호출하지 않고, 이를 반환한다.
-
 def knights2(saying):
     def inner2():
         return "We are the knights who say: '%s'" % saying
@@ -382,8 +378,61 @@ def print_global():
 print('at the top level:', animal)
 print_global()
 
+def change_local():
+    animal = 'wombat'
+    print('inside change_local:', animal, id(animal))
+change_local()
+print(animal)
+print(id(animal))
 
+animal = 'fruitbat'
+def change_and_print_global():
+    global animal
+    animal = 'wombat'
+    print('after the change:', animal)
+print(animal)
+change_and_print_global()
+print(animal)
 
+animal = 'fruitbat' # 전역 변수
+def change_local():
+    animal = 'wombat' # 지역 변수
+    print('locals:', locals())
+print(animal)
+change_local()
+print('globals:', globals())
+print(animal)
 
+print()
+
+# 9.11 이름에 _와 __ 사용하기
+def amazing():
+    '''This is the amazing function.
+    Want to see it again?'''
+    print('This function is named:', amazing.__name__)
+    print('And its docstring is:', amazing.__doc__)
+amazing()
+
+print()
+
+# 9.12 재귀 함수
+def dive():
+    return dive()
+# dive() # RecursionError: maximum recursion depth exceeded
+
+def flatten(lol):
+    for item in lol:
+        if isinstance(item, list):
+            for subitem in flatten(item):
+                yield subitem
+        else:
+            yield item
+lol = [1, 2, [3, 4, 5], [6, [7, 8, 9], []]]
+print(flatten(lol))
+print(list(flatten(lol)))
+
+print()
+
+# 9.13 비동기 함수
 
 
