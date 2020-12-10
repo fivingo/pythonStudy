@@ -435,4 +435,49 @@ print()
 
 # 9.13 비동기 함수
 
+# 9.14 예외
+short_list = [1, 2, 3]
+position = 5
+# short_list[position] # IndexError: list index out of range
+
+# 9.14.1 에러 처리하기: try, except
+short_list = [1, 2, 3]
+position = 5
+try:
+    short_list[position]
+except:
+    print('Need a position between 0 and', len(short_list) - 1, 'but got', position)
+
+short_list = [1, 2, 3]
+# while True:
+#     value = input('Position [q to quit]?')
+#     if value == 'q':
+#         break
+#     try:
+#         position = int(value)
+#         print(short_list[position])
+#     except IndexError as err:
+#         print('Bad index:', position)
+#     except Exception as other:
+#         print('Someting else broke:', other)
+
+print()
+
+# 9.14.2 예외 만들기
+class UppercaseException(Exception):
+    pass
+
+words = ['eenie', 'meeni', 'miny', 'MO']
+# for word in words: # __main__.UppercaseException: MO
+#     if word.isupper():
+#         raise UppercaseException(word)
+
+# try:
+#     raise OopsException('panic')
+# except OopsException as exc:
+#     print(exc)
+
+
+
+
 
