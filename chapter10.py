@@ -425,10 +425,87 @@ who_says(brook)
 print()
 
 # 10.8 매직 매서드
+class Word():
+    def __init__(self, text):
+        self.text = text
+    def equals(self, word2):
+        return self.text.lower() == word2.text.lower()
 
+first = Word('ha')
+second = Word('Ha')
+third = Word('eh')
 
+print(first.equals(second))
+print(first.equals(third))
 
+class Word():
+    def __init__(self, text):
+        self.text = text
+    def __eq__(self, word2):
+        return self.text.lower() == word2.text.lower()
 
+first = Word('ha')
+second = Word('Ha')
+third = Word('eh')
+print(first == second)
+print(first == third)
+
+first = Word('ha')
+print(first)
+
+class Word():
+    def __init__(self, text):
+        self.text = text
+    def __eq__(self, word2):
+        return self.text.lower() == word2.text.lower()
+    def __str__(self):
+        return self.text
+    def __repr__(self):
+        return 'Word("' + self.text + '")'
+
+first = Word('ha')
+print(first.__repr__())
+print(first)
+
+print()
+
+# 10.9 애그리게이션과 콤퍼지션
+class Bill():
+    def __init__(self, description):
+        self.description = description
+
+class Tail():
+    def __init__(self, length):
+        self.length = length
+
+class Duck():
+    def __init__(self, bill, tail):
+        self.bill = bill
+        self.tail = tail
+    def about(self):
+        print('This duck has a', self.bill.description, 'bill and a', self.tail.length, 'tail')
+
+a_tail = Tail('long')
+a_bill = Bill('wide orange')
+duck = Duck(a_bill, a_tail)
+duck.about()
+
+# 10.10 객체는 언제 사용할까?
+'''
+- 비슷한 행동(메서드)을 하지만 내부 상태(속성)가 다른 개별 인스터슨가 필요할 때, 객체는 매우 유용하다.
+- 클래스는 상속을 지우너하지만, 모듈은 상속을 지원하지 않는다.
+- 어떤 한 가지 일만 수행한다면 모듈이 가장 좋은 선택일 것이다. 프로그램에서 파이썬 모듈이 참조된 횟수에 상관없이
+  단 하나의 복사본만 불러온다(자바와 C++ 개발자는 파이썬 모듈을 싱글톤처럼 쓸수있다).
+- 여러 함수에 인수로 전달하는 여러 변수가 있다면, 클래스를 정희하는 것이 더 좋다. 예를 들어 화상 이미지를 나타내기 위해
+  size나 color를 딕셔너리의 키로 사용한다고 가정해보자. 프로그램에서 각 이미지에 대한 딕셔너리를 생성하고,
+  scale()과 transform() 같은 함수에 인수를 전달할 수 잇다. 키와 함수를 추가하면 코드가 지저분해질 수도 있다.
+  size와 color 속성으로하고 scale()과 transform()을 메서드를 하는 이미지 클래스를 정하는 것이 더 일관성이 있다.
+  색상 이미지에 대한 모든 데이터와 메서드를 한 곳에 정의 할 수 있기 때문이다.
+- 가장 간단한 문제 해결법을 사용한다. 딕셔너리, 리스트, 튜플은 모듈보다 더 작고 간단하며 빠르다.
+  그리고 일반적으로 모듈은 클래스보다 더 간단하다.
+'''
+
+# 10.11 네임드 튜플
 
 
 
