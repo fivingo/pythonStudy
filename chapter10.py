@@ -490,6 +490,8 @@ a_bill = Bill('wide orange')
 duck = Duck(a_bill, a_tail)
 duck.about()
 
+print()
+
 # 10.10 객체는 언제 사용할까?
 '''
 - 비슷한 행동(메서드)을 하지만 내부 상태(속성)가 다른 개별 인스터슨가 필요할 때, 객체는 매우 유용하다.
@@ -506,7 +508,33 @@ duck.about()
 '''
 
 # 10.11 네임드 튜플
+from collections import namedtuple
+Duck = namedtuple('Duck', 'bill tail')
+duck = Duck('wide orange', 'long')
+print(duck)
+print(duck.bill)
+print(duck.tail)
 
+parts = {'bill': 'wide orange', 'tail': 'long'}
+duck2 = Duck(**parts)
+print(duck2)
+
+duck2 = Duck(bill = 'wide orange', tail = 'long')
+
+duck3 = duck2._replace(tail='magnificent', bill='crushing')
+print(duck3)
+
+duck_dict = {'bill': 'wide orange', 'tail': 'long'}
+print(duck_dict)
+
+duck_dict['color'] = 'green'
+print(duck_dict)
+
+# duck.color = 'green' # AttributeError: 'Duck' object has no attribute 'color'
+
+print()
+
+# 10.12 데이터 클래스
 
 
 
