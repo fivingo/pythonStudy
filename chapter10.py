@@ -535,15 +535,32 @@ print(duck_dict)
 print()
 
 # 10.12 데이터 클래스
+class TeenyClass():
+    def __init__(self, name):
+        self.name = name
 
+teeny = TeenyClass('itsy')
+print(teeny.name)
 
+from dataclasses import dataclass
+@dataclass
+class TeenyDataClass:
+    name: str
 
+teeny = TeenyDataClass('bitsy')
+print(teeny.name)
 
+from dataclasses import dataclass
+@dataclass
+class AnimalClass:
+    name: str
+    habitat: str
+    teeth: int = 0
 
+snowman = AnimalClass('yeti', 'Himalayas', 46)
+duck = AnimalClass(habitat='lake', name='duck')
+print(snowman)
+print(duck)
 
-
-
-
-
-
-
+print(duck.habitat)
+print(snowman.teeth)
