@@ -1,0 +1,6 @@
+# 11.2 패키지
+
+from choice import fast, advice
+
+print("Let's go to", fast.pick())
+print("Should. we take out?", advice.give())
