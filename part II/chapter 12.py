@@ -57,6 +57,10 @@ print()
 # 4byte: 아시아 언어 및 기호를 포함한 나머지
 
 # 12.1.3 인코딩
+snowman = '\u2603'
+
+print(len(snowman))
+
 
 
 
