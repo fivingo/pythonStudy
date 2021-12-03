@@ -58,8 +58,3 @@ print(psutil.cpu_percent(True))
 print(psutil.cpu_percent(percpu=True))
 
 print()
-
-# 15.2 명령 자동화
-
-# 15.2.1 Invoke
-
