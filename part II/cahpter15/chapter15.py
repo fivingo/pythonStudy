@@ -58,3 +58,8 @@ print(psutil.cpu_percent(True))
 print(psutil.cpu_percent(percpu=True))
 
 print()
+
+# 15.3 동시성
+
+# 15.3.1 큐
+
