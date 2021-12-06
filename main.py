@@ -3,5 +3,5 @@
 # 처음 시작하는 파이썬
 
 # Python Study
-# Author: LIsto
-# IDE: PyCharm
+# Author: LIsto [fivingo]
+# IDE: PyCharm Professional edition
