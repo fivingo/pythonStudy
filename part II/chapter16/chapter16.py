@@ -59,3 +59,56 @@ print()
 
 # 16.3.2 XML
 
+import xml.etree.ElementTree as et
+tree = et.ElementTree(file='chapter16/menu.xml')
+root = tree.getroot()
+print(root.tag)
+for child in root:
+    print('tag:', child.tag, 'attributes:', child.attrib)
+    for grandchild in child:
+        print('\ttag:', grandchild.tag, 'attributes:', grandchild.attrib)
+print(len(root))    # menu의 하위 태그 수
+print(len(root[0])) # breakfast의 item 수
+
+print()
+
+# 16.3.3 XML 보안 노트
+
+# 보안되지 않은 parse
+from xml.etree.ElementTree import parse
+et = parse('chapter16/menu.xml')
+# 보안된 parse
+from defusedxml.ElementTree import parse
+et = parse('chapter16/menu.xml')
+
+# 16.3.4 HTML
+
+# 16.3.5 JSON
+
+menu = \
+    {
+        "breakfast": {
+            "hours": "7-11",
+            "items": {
+                "breakfast burritos": "$6.00",
+                "pancakes": "$4.00"
+            }
+        },
+        "lunch": {
+            "hours": "11-3",
+            "items": {
+                "hamburger": "$5.00"
+            }
+        },
+        "dinner": {
+            "hours": "3-10",
+            "items": {
+                "spaghetti": "$8.00"
+            }
+        }
+    }
+
+import json
+menu_json = json.dump(menu)
+print(menu_json)
+
