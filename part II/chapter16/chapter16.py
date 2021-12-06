@@ -16,12 +16,12 @@ villains = [
     ['Auric', 'Goldfinger'],
     ['Ernst', 'Blofeld'],
 ]
-with open('chapter16/villains', 'wt') as fout: # a context manager
+with open('villains', 'wt') as fout: # a context manager
     csvout = csv.writer(fout)
     csvout.writerows(villains)
 
 import csv
-with open('chapter16/villains', 'rt') as fin: # 컨텍스트 매니저
+with open('villains', 'rt') as fin: # 컨텍스트 매니저
     cin = csv.reader(fin)
     villains = [row for row in cin] # 리스트 컴프리헨션
 print(villains)
@@ -29,7 +29,7 @@ print(villains)
 print()
 
 import csv
-with open('chapter16/villains', 'rt') as fin:
+with open('villains', 'rt') as fin:
     cin = csv.DictReader(fin, fieldnames=['first', 'last'])
     villains = [row for row in cin]
 print(villains)
@@ -44,13 +44,13 @@ villains = [
     {'first': 'Auric', 'last': 'Goldfinger'},
     {'first': 'Ernst', 'last': 'Blofeld'},
 ]
-with open('chapter16/villains.txt', 'wt') as fout:
+with open('villains.txt', 'wt') as fout:
     cout = csv.DictWriter(fout, ['first', 'last'])
     cout.writeheader()
     cout.writerows(villains)
 
 import csv
-with open('chapter16/villains.csv', 'rt') as fin:
+with open('villains.csv', 'rt') as fin:
     cin = csv.DictReader(fin)
     villains = [row for row in cin]
 print(villains)
@@ -60,7 +60,7 @@ print()
 # 16.3.2 XML
 
 import xml.etree.ElementTree as et
-tree = et.ElementTree(file='chapter16/menu.xml')
+tree = et.ElementTree(file='menu.xml')
 root = tree.getroot()
 print(root.tag)
 for child in root:
@@ -76,10 +76,10 @@ print()
 
 # 보안되지 않은 parse
 from xml.etree.ElementTree import parse
-et = parse('chapter16/menu.xml')
+et = parse('menu.xml')
 # 보안된 parse
 from defusedxml.ElementTree import parse
-et = parse('chapter16/menu.xml')
+et = parse('menu.xml')
 
 # 16.3.4 HTML
 
@@ -170,7 +170,7 @@ print()
 # 16.3.8 판다스
 
 import pandas
-data = pandas.read_csv('chapter16/villains.csv')
+data = pandas.read_csv('villains.csv')
 print(data)
 
 import pandas
@@ -200,3 +200,71 @@ print()
 # 16.4.4 TileDB
 
 # 16.5 관계형 데이터베이스
+
+# 16.5.1 SQL
+
+# 16.5.2 DB API
+
+# 16.5.3 SQLite
+
+import sqlite3
+conn = sqlite3.connect('enterprise.db')
+curs = conn.cursor()
+# print(curs.execute('''CREATE TABLE zoo
+#     (critter VARCHAR(20) PRIMARY KEY,
+#     count INT,
+#     damages FLOAT)'''))
+
+print(curs.execute('INSERT INTO zoo VALUES("duck", 5, 0.0)'))
+print(curs.execute('INSERT INTO zoo VALUES("bear", 2, 1000.0)'))
+
+ins = 'INSERT INTO zoo (critter, count, damages) VALUES(?, ?, ?)'
+print(curs.execute(ins, ('weasel', 1, 2000.0)))
+
+curs.execute('SELECT * FROM zoo')
+rows = curs.fetchall()
+print(rows)
+
+print()
+
+# 16.5.4 MySQL
+
+# 16.5.5 PostgreSQL
+
+# 16.5.6 SQLAlchemy
+
+# 16.5.7 기타 데이터베이스 패키지
+
+# 16.6 NoSQL 데이터 스토어
+
+# 16.6.1 dbm 형식
+
+import dbm
+db = dbm.open('definitions', 'c')
+
+db['mustard'] = 'yellow'
+db['ketchup'] = 'red'
+db['pesto'] = 'green'
+
+print(len(db))
+print(db['pesto'])
+
+db.close()
+db = dbm.open('definitions', 'r')
+print(db['mustard'])
+
+print()
+
+# 16.6.2 Memcached
+
+# 16.6.3 Redis
+
+# 16.6.4 문서 데이터베이스
+
+# 16.6.5 시계열 데이터베이스
+
+# 16.6.6 그래프 데이터 베이스
+
+# 16.6.7 기타 NoSQL
+
+# 16.7 풀 텍스트 데이터베이스
