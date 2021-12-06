@@ -109,6 +109,94 @@ menu = \
     }
 
 import json
-menu_json = json.dump(menu)
+menu_json = json.dumps(menu)
 print(menu_json)
 
+menu2 = json.loads(menu_json)
+print(menu2)
+
+import datetime
+import json
+now = datetime.datetime.utcnow()
+print(now)
+# json.dumps(now)
+
+now_str = str(now)
+print(json.dumps(now_str))
+from time import mktime
+now_epoch = int(mktime(now.timetuple()))
+print(json.dumps(now_epoch))
+
+import datetime
+now = datetime.datetime.utcnow()
+class DTEncoder(json.JSONEncoder):
+    def default(self, obj):
+        # isinstance() checks the type of obj
+        if isinstance(obj, datetime.datetime):
+            return int(mktime(obj.timetuple()))
+        # else it's something the normal decoder knows:
+        return json.JSONEncoder.default(self, obj)
+print(json.dumps(now, cls=DTEncoder))
+
+import datetime
+now = datetime.datetime.utcnow()
+print(type(now))
+print(isinstance(now, datetime.datetime))
+print(type(234))
+print(isinstance(234, int))
+print(type('hey'))
+print(isinstance('hey', str))
+
+import datetime
+import json
+now = datetime.datetime.utcnow()
+print(json.dumps(now, default=str))
+
+print()
+
+# 16.3.6 YAML
+
+# import yaml
+# with open('mcintyre.yaml', 'rt') as fin:
+#     text = fin.read()
+# data = yaml.load(text)
+# print(data['details'])
+# print(len(data['poems']))
+
+# print(data['poems'][1]['title'])
+
+# 16.3.7 Tablib
+
+# 16.3.8 판다스
+
+import pandas
+data = pandas.read_csv('chapter16/villains.csv')
+print(data)
+
+import pandas
+dates = pandas.date_range('2021-01-01', periods=3, freq='MS')
+print(dates)
+
+print()
+
+# 16.3.9 설정 파일
+
+# import configparser
+# cfg = configparser.ConfigParser()
+# print(cfg.read('chapter16/settings.cfg'))
+# print(cfg)
+# cfg['french']
+# cfg['french']['greeting']
+# cfg['files']['bin']
+
+# 16.4 이진 파일
+
+# 16.4.1 패디드 아진 파일과 메모리 매핑
+
+# 16.4.2 스프레드시트
+
+# 16.4.3. HDF5
+
+# 16.4.4 TileDB
+
+# 16.5 관계형 데이터베이스
